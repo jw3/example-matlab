@@ -9,6 +9,11 @@ int main() {
 
     Engine *engine = engOpen("");
 
+    if (!engine) {
+        std::cerr << "failed to init matlab" << std::endl;
+        exit(1);
+    }
+
     auto T = mxCreateDoubleMatrix(1, 10, mxREAL);
     memcpy(mxGetPr(T), time, sizeof(time));
     engPutVariable(engine, "T", T);
