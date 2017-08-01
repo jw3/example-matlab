@@ -28,5 +28,5 @@ cmake \
   -DMATLAB_INCLUDE_DIR=/matlab/extern/include \
   -DMATLAB_ENG_LIBRARY=/matlab/bin/glnxa64/libeng.so \
   . \
-&& make install \
 && make -j 5 \
+&& make install
