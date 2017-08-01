@@ -11,7 +11,9 @@ The mods directory contains scripts that modify the build or runtime environment
 
 Execute a mod with `mod` and the name of a mod script in the [mods directory](docker/pdal/mods).
 
-`#! docker run --rm -it jwiii/matlab-pdal-build mod dont-use-link-path`
+So something like this 
+
+`#! docker run --rm -v /usr/local/MATLAB:/matlab:ro jwiii/matlab-pdal-build mod dont-use-link-path`
 
 Should result in a banner that indicates what has been applied
 ```
@@ -19,6 +21,8 @@ Should result in a banner that indicates what has been applied
     - set CMAKE_INSTALL_RPATH_USE_LINK_PATH to FALSE in cmake/rpath.cmake
   *========================================*
 ```
+
+followed by a build of PDAL.
 
 #### see
 - https://hub.docker.com/r/pdal/dependencies/
