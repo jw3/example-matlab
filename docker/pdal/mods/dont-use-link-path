@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+readonly banner=$(cat << desc
+  *================= Mods =================*
+    - set CMAKE_INSTALL_RPATH_USE_LINK_PATH to FALSE in cmake/rpath.cmake
+  *========================================*
+desc
+)
+
+./setit CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE cmake/rpath.cmake
+
+
+printf "\n$banner\n\n"
+
