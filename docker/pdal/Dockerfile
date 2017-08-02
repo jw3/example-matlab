@@ -9,6 +9,8 @@ RUN apt-get update \
  && apt-get install nano locate \
  && updatedb
 
+ENV PATH="/matlab/bin:$PATH"
+
 WORKDIR /PDAL
 
 COPY build.sh /PDAL/build
