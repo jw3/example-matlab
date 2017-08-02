@@ -1,5 +1,14 @@
 #!/bin/bash
 
+readonly the_services=(\
+/matlab/bin/glnxa64/libcrypto.so.1 \
+/matlab/bin/glnxa64/libcrypto.so.1.0.0 \
+/matlab/bin/glnxa64/libssl.so.1 \
+/matlab/bin/glnxa64/libssl.so.1.0.0 \
+)
+
+for f in "${the_services[@]}"; do mv "$f" "$f.hacked"; done;
+
 cmake \
   -DBUILD_PLUGIN_CPD=OFF \
   -DBUILD_PLUGIN_MBIO=OFF \

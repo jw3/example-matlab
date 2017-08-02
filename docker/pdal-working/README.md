@@ -1,8 +1,7 @@
-PDAL
+PDAL with working Matlab
 ===
 
-Out of the box, linking issues with Matlab
-
+Using a modified version of pdal and some runtime changes.
 
 #### see
 - https://hub.docker.com/r/pdal/dependencies/
