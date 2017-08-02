@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-main() {
-  sed -i -e "s/SET($1 \w*)/SET($1 $2)/" $3
-}
-
-main "$@"
