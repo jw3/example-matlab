@@ -3,18 +3,32 @@ matlab examples
 
 Some examples of using the Matlab libraries with cmake and c++
 
-### configuration notes
+### Matlab configuration notes
 
-If cmake does not want to find your installed matlab, take a look at the list of versions it is looking for.
+- Ensure that `matlab` is found on the PATH when executing, as the wrapper call uses the cmd line .. as strange as that is
+- FindMatlab.cmake actually calls `matlab` to identify the version number of the application, failing if it cant
+  - So in other words your license needs to be available to run CMake
+- Turn on `MATLAB_FIND_DEBUG` for help
+  - `set(MATLAB_FIND_DEBUG true)`
+- FindMatlab.cmake uses a hardcoded list of version numbers when it searches for matlab
+  - You can add a new version with `MATLAB_ADDITIONAL_VERSIONS`
+- Matlab shared libraries are not versioned and may conflict with system libraries when linking
 
-For example, if on Ubuntu 16.04 and CMake 3.5.1, you will not have some of the latest releases included.
 
-- https://github.com/Kitware/CMake/blob/v3.5.1/Modules/FindMatlab.cmake#L231-L246
+### Adding all current Matlab versions to CMake 3.5.1
 
-You can add a new version with `MATLAB_ADDITIONAL_VERSIONS`
+If on Ubuntu 16.04 and CMake 3.5.1, only versions up to `"R2015b=8.6"` will be found by default ([source](https://github.com/Kitware/CMake/blob/v3.5.1/Modules/FindMatlab.cmake#L231-L246))
 
-  `set(MATLAB_ADDITIONAL_VERSIONS "R2017a=9.2")` 
+To add versions up to the latest as of 08/2017, add this before find_library.
+
+- 
+  ```
+    set(MATLAB_ADDITIONAL_VERSIONS 
+        "R2017a=9.2"
+        "R2016b=9.1"
+        "R2016a=9.0")
+  ```
 
 ### See
-- https://cmake.org/cmake/help/v3.3/module/FindMatlab.html
-- https://github.com/Kitware/CMake/blob/master/Modules/FindMatlab.cmake
+- https://cmake.org/cmake/help/v3.5/module/FindMatlab.html
+- https://github.com/Kitware/CMake/blob/v3.5.1/Modules/FindMatlab.cmake
