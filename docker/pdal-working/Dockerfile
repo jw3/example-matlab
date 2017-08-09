@@ -15,7 +15,5 @@ ENV PATH="/matlab/bin:$PATH"
 WORKDIR /PDAL/build
 
 COPY build.sh /PDAL/build
-COPY matlab.cmake /PDAL/cmake
-COPY FindMatlab.cmake /PDAL/cmake/modules
 
 CMD ["/PDAL/build/build.sh"]
