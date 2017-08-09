@@ -12,8 +12,10 @@ RUN apt-get update \
 
 ENV PATH="/matlab/bin:$PATH"
 
-WORKDIR /PDAL
+WORKDIR /PDAL/build
 
 COPY build.sh /PDAL/build
+COPY matlab.cmake /PDAL/cmake
+COPY FindMatlab.cmake /PDAL/cmake/modules
 
-CMD ["/PDAL/build.sh"]
+CMD ["/PDAL/build/build.sh"]
