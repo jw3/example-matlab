@@ -5,6 +5,7 @@ Some examples of using the Matlab libraries with cmake and c++
 
 ### Matlab configuration notes
 
+- Set `Matlab_ROOT_DIR` to point cmake to the right installation
 - Ensure that `matlab` is found on the PATH when executing, as the wrapper call uses the cmd line .. as strange as that is
 - FindMatlab.cmake actually calls `matlab` to identify the version number of the application, failing if it cant
   - So in other words your license needs to be available to run CMake
