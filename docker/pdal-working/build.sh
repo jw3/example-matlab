@@ -31,11 +31,7 @@ cmake \
   -DWITH_PDAL_JNI=OFF \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_PLUGIN_MATLAB=ON \
-  -DMATLAB_MEX_LIBRARY=/matlab/bin/glnxa64/libmex.so \
-  -DMATLAB_MAT_LIBRARY=/matlab/bin/glnxa64/libmat.so \
-  -DMATLAB_MX_LIBRARY=/matlab/bin/glnxa64/libmx.so \
-  -DMATLAB_INCLUDE_DIR=/matlab/extern/include \
-  -DMATLAB_ENG_LIBRARY=/matlab/bin/glnxa64/libeng.so \
+  -DMATLAB_FIND_DEBUG=ON \
   .. \
 && make -j 5 \
 && make install
