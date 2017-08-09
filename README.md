@@ -14,6 +14,8 @@ Some examples of using the Matlab libraries with cmake and c++
   - You can add a new version with `MATLAB_ADDITIONAL_VERSIONS`
 - Matlab shared libraries are not versioned and may conflict with system libraries when linking
 - It appears `R2015b` may not have the linking issues that `R2017a` has
+- It also appears that using the standard matlab finder resolves linking issues all together?
+  - or at least hacking libs out of path is not needed anyways 
 
 
 ### Adding all current Matlab versions to CMake 3.5.1
