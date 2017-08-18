@@ -34,6 +34,12 @@ To add versions up to the latest as of 08/2017, add this before find_library.
         "R2016a=9.0")
   ```
 
+### Packaging
+
+After installing deb package matlab is not found on ld path.  Host or build concern?  For now just
+
+`LD_LIBRARY_PATH=/usr/local/MATLAB/bin/glnxa64 example_matlab_simple` 
+
 ### See
 - https://cmake.org/cmake/help/v3.5/module/FindMatlab.html
 - https://github.com/Kitware/CMake/blob/v3.5.1/Modules/FindMatlab.cmake
