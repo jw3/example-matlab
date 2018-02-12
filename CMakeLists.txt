@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(example_matlab)
 
 set(MATLAB_ADDITIONAL_VERSIONS
+    "R2017b=9.4"
     "R2017b=9.3"
     "R2017a=9.2"
     "R2016b=9.1"
