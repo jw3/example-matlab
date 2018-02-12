@@ -1,0 +1,64 @@
+image: pdal/dependencies
+
+stages:
+  - package
+  - dockerize
+
+cpack-deb:
+  stage: package
+  script:
+    - >
+        cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr/local \
+        \ #
+        \ # PDAL Configuration
+        \ #
+        -DBUILD_PLUGIN_PYTHON=OFF \
+        -DWITH_LAZPERF=OFF \
+        -DWITH_LASZIP=OFF \
+        -DWITH_PDAL_JNI=OFF \
+        -DWITH_TESTS=ON \
+        -DENABLE_CTEST=OFF \
+        \ #
+        \ # PDAL Plugins
+        \ #
+        -DBUILD_PLUGIN_CPD=OFF \
+        -DBUILD_PLUGIN_MBIO=OFF \
+        -DBUILD_PLUGIN_GREYHOUND=OFF \
+        -DBUILD_PLUGIN_HEXBIN=OFF \
+        -DBUILD_PLUGIN_ICEBRIDGE=OFF \
+        -DBUILD_PLUGIN_MRSID=OFF \
+        -DBUILD_PLUGIN_NITF=OFF \
+        -DBUILD_PLUGIN_OCI=OFF \
+        -DBUILD_PLUGIN_PCL=OFF \
+        -DBUILD_PLUGIN_PGPOINTCLOUD=OFF \
+        -DBUILD_PLUGIN_SQLITE=OFF \
+        -DBUILD_PLUGIN_RIVLIB=OFF \
+        \ #
+        \ # PDAL Matlab
+        \ #
+        -DBUILD_PLUGIN_MATLAB=ON \
+        -DMATLAB_FIND_DEBUG=ON .
+    - make -j7
+    - cpack -D CPACK_DEBIAN_PACKAGE_MAINTAINER=wassj -G DEB
+  tags:
+    - matlab
+    - containers
+  artifacts:
+    paths:
+      - "*.deb"
+
+
+dockerize:
+  image: docker:latest
+  stage: dockerize
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker build --build-arg http_proxy --build-arg https_proxy -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
+    - docker rmi $CI_REGISTRY_IMAGE
+  dependencies:
+    - cpack-deb
+  tags:
+    - containers
