@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #ifndef _MCLCPPCLASS_H_
 #include <mclmcrrt.h>
@@ -14,4 +15,5 @@ namespace my
    };
 
    mwArray toArray(const std::string&);
+   mwArray toStruct(std::vector<const char*>&);
 }
