@@ -1,9 +1,12 @@
 #include <MyPlugin.h>
 #include <array>
 
+#include <catch.hpp>
+
 using namespace my;
 
-int main(int c, char** v) {
+TEST_CASE("string_to_array")
+{
    std::array<const char*, 2> args{"-nodesktop", "-nojvm"};
    mclInitializeApplication(args.data(), args.size());
 
@@ -11,9 +14,8 @@ int main(int c, char** v) {
    mwArray actual = toArray(expected);
 
    const char* astr = actual.ToString();
-   int res = std::string(astr) == expected;
+
+   REQUIRE(std::string(astr) == expected);
 
    mclTerminateApplication();
-
-   return !res;
 }
