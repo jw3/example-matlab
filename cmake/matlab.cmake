@@ -23,3 +23,8 @@ function(set_matlab_rpath target)
                           INSTALL_RPATH "${Matlab_MCR_RPATH}"
                           BUILD_WITH_INSTALL_RPATH true)
 endfunction(set_matlab_rpath)
+
+function(add_matlab_mcr target)
+    target_link_libraries(${target} PRIVATE ${Matlab_MCR_LIBRARIES})
+    target_include_directories(${target} PRIVATE ${Matlab_INCLUDE_DIRS})
+endfunction(add_matlab_mcr)
