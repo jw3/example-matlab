@@ -1,5 +1,6 @@
 #include "MyPlugin.h"
 
+#include <BuildInfo.hpp>
 #include <SomeMccLib.h>
 
 namespace my

@@ -1,0 +1,12 @@
+#pragma once
+
+#include <string>
+
+namespace BuildInfo
+{
+
+const std::string GitCommitId = "${GIT_COMMIT_ID}";
+
+const std::string GitShortCommitId = "${GIT_COMMIT_SHORT_ID}";
+
+}
