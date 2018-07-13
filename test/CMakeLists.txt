@@ -1,5 +1,6 @@
 add_executable(plugin_test driver.cpp MyPluginTest.cpp)
-target_link_libraries(plugin_test PRIVATE plugin CONAN_PKG::catch2)
+target_link_libraries(plugin_test PRIVATE plugin CONAN_PKG::catch2 ext)
+target_include_directories(plugin_test PRIVATE ${CMAKE_SOURCE_DIR}/ext)
 
 add_matlab_mcr(plugin_test)
 

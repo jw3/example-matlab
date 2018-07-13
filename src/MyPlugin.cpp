@@ -1,7 +1,16 @@
 #include "MyPlugin.h"
 
+#include <SomeMccLib.h>
+
 namespace my
 {
+   void MyPlugin::run() {
+      initializeSomeMccLib();
+      mwArray ret;
+      callSomeMccLib(1, ret, mwArray("0"), mwArray("1"));
+      terminateSomeMccLib();
+   }
+
    mwArray toArray(const std::string& str) {
       return mwArray(str.c_str());
    }

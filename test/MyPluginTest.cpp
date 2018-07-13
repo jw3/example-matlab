@@ -27,3 +27,8 @@ TEST_CASE("to_struct") {
       REQUIRE(f == std::string(static_cast<const char*>(struk.GetFieldName(i++))));
    }
 }
+
+TEST_CASE("run") {
+   MyPlugin p;
+   p.run();
+}

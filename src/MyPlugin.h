@@ -12,6 +12,7 @@ namespace my
 {
    struct MyPlugin
    {
+      void run();
    };
 
    mwArray toArray(const std::string&);
