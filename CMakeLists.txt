@@ -15,6 +15,7 @@ endif()
 
 include_directories(src)
 add_subdirectory(src)
+add_subdirectory(ext)
 
 option(WITH_TESTS "enable tests to build" ON)
 if (WITH_TESTS)
