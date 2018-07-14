@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(example_matlab)
 
+find_package(Threads REQUIRED)
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+
 set(MATLAB_ADDITIONAL_VERSIONS
     "R2017b=9.4"
     "R2017b=9.3"
@@ -24,5 +27,6 @@ message(STATUS "matlab mcr libraries: ${Matlab_MCR_LIBRARIES}")
 
 set(CMAKE_CXX_STANDARD 11)
 
-#add_subdirectory("${PROJECT_SOURCE_DIR}/simple")
+add_subdirectory("${PROJECT_SOURCE_DIR}/simple")
 add_subdirectory(mcc)
+add_subdirectory(2018)
