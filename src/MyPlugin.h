@@ -23,7 +23,7 @@ namespace pdal
    };
 }
 
-namespace my
+namespace util
 {
    mwArray toArray(const std::string&);
    mwArray toStruct(std::vector<const char*>&);

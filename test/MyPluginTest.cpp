@@ -4,7 +4,7 @@
 #include <array>
 #include <pdal/PointView.hpp>
 
-using namespace my;
+using namespace util;
 using namespace pdal;
 
 TEST_CASE("string_to_array") {

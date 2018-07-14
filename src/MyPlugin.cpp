@@ -43,7 +43,7 @@ namespace pdal
    }
 }
 
-namespace my
+namespace util
 {
    mwArray toArray(const std::string& str) {
       return mwArray(str.c_str());
