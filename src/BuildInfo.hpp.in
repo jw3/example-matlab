@@ -5,6 +5,22 @@
 namespace BuildInfo
 {
 
+const std::string PluginVersion = "${FULL_VERSION_STRING}";
+
+const std::string PluginMajorVersion = "${VERSION_MAJOR}";
+
+const std::string PluginMinorVersion = "${VERSION_MINOR}";
+
+const std::string PluginPatchVersion = "${VERSION_PATCH}";
+
+const std::string PluginName = "MyPlugin";
+
+const std::string PluginDescription = "Example of PDAL with MCR and tests v${FULL_VERSION_STRING} [${GIT_COMMIT_SHORT_ID}]";
+
+const std::string PluginURL = "http://link/to/documentation";
+
+const std::string PDALStageName = "filters.MyPlugin";
+
 const std::string GitCommitId = "${GIT_COMMIT_ID}";
 
 const std::string GitShortCommitId = "${GIT_COMMIT_SHORT_ID}";

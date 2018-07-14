@@ -1,9 +1,11 @@
-#include <MyPlugin.h>
-#include <array>
-
 #include <catch.hpp>
+#include <MyPlugin.h>
+
+#include <array>
+#include <pdal/PointView.hpp>
 
 using namespace my;
+using namespace pdal;
 
 TEST_CASE("string_to_array") {
    std::string expected = "__mystr__";
@@ -29,6 +31,10 @@ TEST_CASE("to_struct") {
 }
 
 TEST_CASE("run") {
+   PointTable t;
+   PointViewPtr v = std::make_shared<PointView>(t);
+
    MyPlugin p;
-   p.run();
+   p.ready(t);
+   p.run(v);
 }

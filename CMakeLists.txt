@@ -15,6 +15,8 @@ else()
     message(WARNING "The file conanbuildinfo.cmake doesn't exist, you have to run conan install first")
 endif()
 
+find_package(PDAL 1.7.0 REQUIRED CONFIG)
+
 include_directories(src)
 add_subdirectory(src)
 add_subdirectory(ext)
