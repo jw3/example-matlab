@@ -1,11 +1,14 @@
-add_executable(plugin_test driver.cpp MyPluginTest.cpp)
-target_link_libraries(plugin_test PRIVATE plugin CONAN_PKG::catch2 ext)
-target_include_directories(plugin_test PRIVATE ${CMAKE_SOURCE_DIR}/ext)
+include(add_test_suite)
 
-# add the mocked mcc lib
-target_sources(plugin_test PRIVATE MockSomeMccLib.cpp)
+# suite 1
+add_test_suite(test_suite_1 UtilsTest.cpp)
+add_matlab_mcr(test_suite_1)
 
-add_matlab_mcr(plugin_test)
+# suite 2 / with mcc lib
+add_test_suite(test_suite_2 MyPluginTest.cpp)
+target_link_libraries(test_suite_2 PRIVATE ext)
+target_include_directories(test_suite_2 PRIVATE ${CMAKE_SOURCE_DIR}/ext)
+add_matlab_mcr(test_suite_2)
 
-add_test(NAME plugin_test
-         COMMAND plugin_test)
+# add the mocked mcc lib to suite 2
+target_sources(test_suite_2 PRIVATE MockSomeMccLib.cpp)
