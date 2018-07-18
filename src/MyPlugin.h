@@ -16,6 +16,13 @@ namespace pdal
    {
       std::string getName() const override;
 
+      struct Args
+      {
+         int ten2twenty;
+         std::string notempty;
+      };
+      Args m_args;
+
       void addArgs(ProgramArgs&) override;
       void ready(PointTableRef) override;
       PointViewSet run(PointViewPtr) override;

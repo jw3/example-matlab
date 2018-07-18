@@ -1,4 +1,7 @@
 #include "MyPlugin.h"
+#include "Array.h"
+
+#include <pdal/ArtifactManager.hpp>
 
 #include <BuildInfo.hpp>
 #include <SomeMccLib.h>
@@ -19,11 +22,16 @@ namespace pdal
 
    void MyPlugin::addArgs(ProgramArgs& args) {
       std::cout << BuildInfo::PDALStageName << "::addArgs" << std::endl;
+      args.add("ten2twenty", "number between 10 and 20", m_args.ten2twenty);
+      args.add("notempty", "a non empty string", m_args.notempty);
    }
 
    void MyPlugin::ready(PointTableRef table) {
       std::cout << BuildInfo::PDALStageName << "::ready" << std::endl;
       initializeSomeMccLib();
+
+      if(m_args.ten2twenty < 10 || m_args.ten2twenty > 20) throwError("ten2twenty must be between 10 and 20");
+      if(m_args.notempty.empty()) throwError("notempty must not be empty");
    }
 
    PointViewSet MyPlugin::run(PointViewPtr view) {
@@ -31,6 +39,9 @@ namespace pdal
 
       mwArray ret;
       callSomeMccLib(1, ret, mwArray("0"), mwArray("1"));
+
+      view->table().artifactManager().put("ten2twenty", matlab::mkarray(m_args.ten2twenty));
+      view->table().artifactManager().put("notempty", matlab::mkarray(m_args.notempty));
 
       PointViewSet viewSet;
       viewSet.insert(view);
