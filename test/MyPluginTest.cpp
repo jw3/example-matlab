@@ -19,7 +19,7 @@ TEST_CASE("validate_parameters_pass") {
 
    MyPlugin p;
    p.addOptions(opts);
-   REQUIRE_NOTHROW(p.ready(t));
+   REQUIRE_NOTHROW(p.prepare(t));
 }
 
 TEST_CASE("validate_parameters_defaults") {
@@ -27,7 +27,7 @@ TEST_CASE("validate_parameters_defaults") {
    PointViewPtr v = std::make_shared<PointView>(t);
 
    MyPlugin p;
-   p.ready(t);
+   p.prepare(t);
 
    REQUIRE(p.m_args.notempty == "_");
    REQUIRE(p.m_args.ten2twenty == 12);
@@ -51,7 +51,7 @@ TEST_CASE("validate_artifacts") {
    PointViewPtr v = std::make_shared<PointView>(t);
 
    MyPlugin p;
-   p.ready(t);
+   p.prepare(t);
    p.run(v);
 
    auto x = t.artifactManager().get<A>("ten2twenty");
