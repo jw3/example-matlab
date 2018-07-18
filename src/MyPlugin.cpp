@@ -22,8 +22,8 @@ namespace pdal
 
    void MyPlugin::addArgs(ProgramArgs& args) {
       std::cout << BuildInfo::PDALStageName << "::addArgs" << std::endl;
-      args.add("ten2twenty", "number between 10 and 20", m_args.ten2twenty);
-      args.add("notempty", "a non empty string", m_args.notempty);
+      args.add("ten2twenty", "number between 10 and 20", m_args.ten2twenty, 12);
+      args.add("notempty", "a non empty string", m_args.notempty, "_");
    }
 
    void MyPlugin::ready(PointTableRef table) {

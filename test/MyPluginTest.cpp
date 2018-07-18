@@ -22,6 +22,17 @@ TEST_CASE("validate_parameters_pass") {
    REQUIRE_NOTHROW(p.ready(t));
 }
 
+TEST_CASE("validate_parameters_defaults") {
+   PointTable t;
+   PointViewPtr v = std::make_shared<PointView>(t);
+
+   MyPlugin p;
+   p.ready(t);
+
+   REQUIRE(p.m_args.notempty == "_");
+   REQUIRE(p.m_args.ten2twenty == 12);
+}
+
 TEST_CASE("validate_parameters_fail") {
    PointTable t;
    PointViewPtr v = std::make_shared<PointView>(t);
@@ -39,6 +50,16 @@ TEST_CASE("validate_artifacts") {
    PointTable t;
    PointViewPtr v = std::make_shared<PointView>(t);
 
+   MyPlugin p;
+   p.ready(t);
+   p.run(v);
+
    auto x = t.artifactManager().get<A>("ten2twenty");
    auto y = t.artifactManager().get<A>("nonempty");
+
+   int ten2twenty = x->data.Get(1, 1);
+   std::string nonempty = std::string(y->data.ToString());
+
+   REQUIRE(ten2twenty == 12);
+   REQUIRE(nonempty == "_");
 }
