@@ -1,4 +1,4 @@
-add_library(plugin MyPlugin.h MyPlugin.cpp)
+add_library(plugin Array.h MyPlugin.h MyPlugin.cpp)
 target_link_libraries(plugin PRIVATE ${PDAL_LIBRARIES} ext)
 target_include_directories(plugin PRIVATE ${CMAKE_SOURCE_DIR}/ext ${PDAL_INCLUDE_DIRS})
 
