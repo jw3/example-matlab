@@ -9,6 +9,17 @@ using namespace pdal;
 
 using A = matlab::Array;
 
+namespace
+{
+   template<typename T>
+   Options optionsFor(const std::string& k, const std::vector<T>& vs) {
+      Options opts;
+      for(const auto& v: vs)
+         opts.add(k, v);
+      return opts;
+   }
+}
+
 TEST_CASE("validate_parameters_pass") {
    PointTable t;
    PointViewPtr v = std::make_shared<PointView>(t);
@@ -62,4 +73,19 @@ TEST_CASE("validate_artifacts") {
 
    REQUIRE(ten2twenty == 12);
    REQUIRE(nonempty == "_");
+}
+
+TEST_CASE("set_vec") {
+   PointTable t;
+   PointViewPtr v = std::make_shared<PointView>(t);
+
+   Options opts;
+   opts.add(optionsFor<int>("vecparam", {999, 998, 997}));
+
+   MyPlugin p;
+   p.addOptions(opts);
+   p.prepare(t);
+
+   REQUIRE(p.m_args.vecparam.size() == 3);
+   REQUIRE(p.m_args.vecparam.at(1) == 998);
 }

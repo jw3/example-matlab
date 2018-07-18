@@ -24,6 +24,7 @@ namespace pdal
       std::cout << BuildInfo::PDALStageName << "::addArgs" << std::endl;
       args.add("ten2twenty", "number between 10 and 20", m_args.ten2twenty, 12);
       args.add("nonempty", "a non empty string", m_args.notempty, "_");
+      args.add("vecparam", "just a vector of ints", m_args.vecparam, {1, 2, 3});
    }
 
    void MyPlugin::ready(PointTableRef table) {

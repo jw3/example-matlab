@@ -20,6 +20,7 @@ namespace pdal
       {
          int ten2twenty;
          std::string notempty;
+         std::vector<int> vecparam;
       };
       Args m_args;
 
