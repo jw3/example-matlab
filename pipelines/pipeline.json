@@ -1,0 +1,9 @@
+{
+  "pipeline": [
+    {
+      "type": "filters.VecFilter",
+      "vec":"1",
+      "vec":"2"
+    }
+  ]
+}
