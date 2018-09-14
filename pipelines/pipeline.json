@@ -1,6 +1,9 @@
 {
   "pipeline": [
     {
+      "ivec": [-1,2,-3],
+      "dvec": [-1.1,2.2,-3.3],
+      "svec": "foo,bar",
       "type": "filters.vec"
     }
   ]

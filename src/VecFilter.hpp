@@ -8,7 +8,9 @@ namespace pdal
    {
       struct Args
       {
+         int ival;
          std::vector<int> ivec;
+         std::vector<double> dvec;
          std::vector<std::string> svec;
       };
       Args m_args;
